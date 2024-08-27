@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Filter Services</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+       .pure-service-container-main{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .pure-service-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .pure-service-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .pure-service-h1 {
+            color: #2c3e50;
+        }
+        .pure-service-subtitle {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .pure-service-cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .pure-service-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .pure-service-service-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .pure-service-service-card:hover {
+            transform: translateY(-5px);
+        }
+        .pure-service-service-card h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .pure-service-video-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .pure-service-video-placeholder {
+            background-color: #ddd;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 666px) {
+            .pure-service-services {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+        @media (max-width: 480px) {
+            .pure-service-services {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            .pure-service-service-card {
+                padding: 15px;
+            }
+        }
+        @media (max-width: 230px) {
+            .pure-service-services {
+                grid-template-columns: 1fr;
+            }
+            .pure-service-cta-button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            .pure-service-service-card {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pure-service-container-main">
+    <div class="pure-service-container">
+        <header class="pure-service-header">
+            <h1 class="pure-service-h1">Premium Water Filter Services</h1>
+            <p class="pure-service-subtitle">Quality filters and maintenance for cleaner water.</p>
+        </header>
+
+        <div class="pure-service-services">
+            <div class="pure-service-service-card">
+                <h3>Regular Maintenance Visits</h3>
+                <p>Professional cleaning and check-ups to keep your system running smoothly.</p>
+            </div>
+            <div class="pure-service-service-card">
+                <h3>Annual Filter Replacement</h3>
+                <p>Timely replacement of filters to ensure optimal water quality.</p>
+            </div>
+            <div class="pure-service-service-card">
+                <h3>Genuine Replacement Parts</h3>
+                <p>High-quality components for all repairs and upgrades.</p>
+            </div>
+            <div class="pure-service-service-card">
+                <h3>Trusted Service History</h3>
+                <p>Decades of experience with a large network of certified technicians.</p>
+            </div>
+        </div>
+
+        <div class="pure-service-video-section">
+            <div class="pure-service-video-placeholder">Video Player</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
