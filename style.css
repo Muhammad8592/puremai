@@ -4,18 +4,251 @@
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #f8f9fa;
+  --text-color: #333;
+  --wave-color: #e6f3ff;
+}
 
 body {
 
   color: #fff;
   overflow-x: hidden;
 }
+
+
+
+.banner-head-container-main{
+  /* font-family: 'Poppins', sans-serif;
+  background-color: #e4f1ff;
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden; */
+
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e4f1ff 0%, #cde4ff 50%, #b2d3ff 100%);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.banner-head-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 6rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 5vh;
+  position: relative;
+}
+
+.banner-head-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--wave-color);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+  z-index: -1;
+}
+
+.banner-head-content {
+  flex: 0 1 50%;
+  padding-right: 4rem;
+}
+
+.banner-head-h1 {
+  font-size: 4rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-align: start;
+  letter-spacing: 1px;
+}
+
+.banner-head-h2 {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: start;
+  letter-spacing: 0.5px;
+}
+
+.banner-head-p {
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  max-width: 600px;
+  color: #555;
+  text-align: start;
+}
+
+.banner-head-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.banner-head-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.banner-head-btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.banner-head-btn-primary:hover {
+  background-color: #3a7bc8;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(74, 144, 226, 0.3);
+}
+
+.banner-head-btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.banner-head-btn-secondary:hover {
+  background-color: #e9ecef;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.banner-head-btn-tertiary {
+  color: var(--primary-color);
+  padding: 0;
+}
+
+.banner-head-btn-tertiary:hover {
+  color: #3a7bc8;
+  transform: translateX(5px);
+}
+
+.banner-head-btn-tertiary svg {
+  margin-left: 0.5rem;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+.banner-head-btn-tertiary:hover svg {
+  transform: translateX(3px);
+}
+
+.banner-head-image-container {
+  flex: 0 1 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-head-image {
+  max-width: 100%;
+  height: 520px;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.banner-head-image:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 1200px) {
+  .banner-head-container {
+      padding: 4rem 3rem;
+  }
+  .banner-head-h1 {
+      font-size: 3.5rem;
+  }
+  .banner-head-h2 {
+      font-size: 3rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .banner-head-container {
+      flex-direction: column;
+      text-align: center;
+      padding: 3rem 2rem;
+  }
+
+  .banner-head-content {
+      padding-right: 0;
+      margin-bottom: 3rem;
+  }
+
+  .banner-head-buttons {
+      justify-content: center;
+  }
+
+  .banner-head-h1 {
+      font-size: 3rem;
+  }
+
+  .banner-head-h2 {
+      font-size: 2.5rem;
+  }
+
+  .banner-head-p {
+      margin-left: auto;
+      margin-right: auto;
+  }
+
+  .banner-head-wave {
+      height: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner-head-container {
+      padding: 2rem 1.5rem;
+  }
+  .banner-head-h1 {
+      font-size: 2.5rem;
+  }
+  .banner-head-h2 {
+      font-size: 2rem;
+  }
+  .banner-head-btn {
+      width: 100%;
+      justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .pure-navbar {
   display: flex;
   justify-content: center;
   background-color: #fff;
   padding: 10px 5%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Make the navbar sticky */
+  top: 0; /* Position it at the top of the page */
+  z-index: 1000;
 }
 
 .pure-navbar-cntr {
@@ -40,6 +273,7 @@ body {
   text-decoration: none;
   font-size: 14px;
   font-weight: 400;
+  padding: 5px;
 }
 
 .pure-hamburger {
@@ -48,106 +282,26 @@ body {
   gap: 4px;
   cursor: pointer;
 }
+.pure-nav-links a:hover {
+  color: #2980b9;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgba(41, 128, 185, 0.1);
+}
 
+
+.pure-nav-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
 .pure-hamburger div {
   width: 25px;
   height: 2px;
   background-color: #333;
 }
 
-.pure-hero-main-bg{
-  background: url(./images/pikaso_texttoimage_A-modern-water-purifier-displayed-prominently-in-a\ \(1\).jpeg) no-repeat center center/cover;
-}
-.pure-hero-main{
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-  padding:  20px;
-
-}
-.pure-hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 3rem 5%;
-
-  
-}
-
-.pure-hero-content {
-  max-width: 45%;
-}
-
-.pure-hero-content h1 {
-  font-size: 3.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  color: rgb(145, 145, 145);
-}
-
-.pure-product-name {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.pure-price {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.pure-discount-note {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-bottom: 1.5rem;
-}
-
-.pure-cta-button {
-  display: inline-block;
-  background-color: #fff;
-  color: #111;
-  padding: 0.75rem 2rem;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 25px;
-}
-
-.pure-product-image {
-  max-width: 50%;
-  height: auto;
-}
-
-.pure-features {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding: 0 5% 3rem;
-}
-
-.pure-feature-card {
-  background-color: #222;
-  padding: 0; /* Removed padding */
-  border-radius: 10px;
-  text-align: center;
-  overflow: hidden;
-  height: 250px;
-}
-
-.pure-feature-card img {
-  width: 100%; 
-  height: 60%; 
-  object-fit: cover; 
-  border-radius: 10px 10px 0 0;
-}
 
 
-
-.pure-feature-card h3, .pure-feature-card p {
-  padding: 10px;
-  background-color: #222;
-  margin: 0;
-  text-align: start;
-}
 @media (max-width: 768px) {
   .pure-navbar-cntr {
       flex-wrap: wrap;
@@ -399,7 +553,7 @@ h1 {
   background: #f9f9f9;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -444,6 +598,7 @@ h1 {
 .pure-service-container-main{
   font-family: Arial, sans-serif;
   line-height: 1.6;
+
   background: linear-gradient(to right, #f0f0f0, #ffffff);
   /* background: url(./images/pikaso_texttoimage_A-white-modern-water-purifier-machine-displayed-pr.jpg); */
   color: #333;
@@ -452,10 +607,12 @@ h1 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+
 }
 .pure-service-header {
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 100px;
 }
 .pure-service-h1 {
   color: #2c3e50;
@@ -481,6 +638,7 @@ h1 {
 .pure-service-service-card {
   background-color: #f9f9f9;
   padding: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   transition: transform 0.3s ease;
 }
@@ -494,6 +652,7 @@ h1 {
 .pure-service-video-section {
   text-align: center;
   margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .pure-service-video-placeholder {
@@ -513,30 +672,10 @@ h1 {
   width: 100%; /* Cover the full width of the container */
   height: 100%; /* Cover the full height of the container */
   object-fit: cover; /* Ensure the image covers the container without distortion */
-  opacity: 0; /* Hide images initially */
-  transition: opacity 1s ease-in-out;
+
 }
 
-.pure-service-video-placeholder img:nth-child(1) {
-  animation: carousel 6s infinite;
-}
 
-.pure-service-video-placeholder img:nth-child(2) {
-  animation: carousel 6s infinite 2s; /* Starts after 2s */
-}
-
-.pure-service-video-placeholder img:nth-child(3) {
-  animation: carousel 6s infinite 4s; /* Starts after 4s */
-}
-
-@keyframes carousel {
-  0%, 33% {
-    opacity: 1;
-  }
-  66%, 100% {
-    opacity: 0;
-  }
-}
 
 
 @media (max-width: 666px) {
