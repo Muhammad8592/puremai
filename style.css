@@ -6,84 +6,55 @@
 }
 
 body {
-  background-color: #111;
+
   color: #fff;
   overflow-x: hidden;
 }
-
 .pure-navbar {
   display: flex;
-  justify-content: center; /* Center the entire navbar */
-  align-items: center;
-  padding: 1rem 5%;
+  justify-content: center;
   background-color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  
+  padding: 10px 5%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.pure-navbar-cntr{
-  max-width: 1200px; /* Set a maximum width */
-  width: 100%; /* Full width */
+
+.pure-navbar-cntr {
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
+
 .pure-logo {
-  height: 30px;
+  height: 40px;
 }
 
 .pure-nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .pure-nav-links a {
   color: #333;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.pure-icons {
-  display: flex;
-  gap: 1.5rem;
-  color: #333;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .pure-hamburger {
   display: none;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   cursor: pointer;
 }
 
 .pure-hamburger div {
   width: 25px;
-  height: 3px;
+  height: 2px;
   background-color: #333;
 }
 
-.pure-hamburger-menu {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 5%;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-  width: 200px;
-}
-
-.pure-hamburger-menu a {
-  display: block;
-  color: #333;
-  text-decoration: none;
-  font-size: 1rem;
-  margin: 0.5rem 0;
-}
 .pure-hero-main-bg{
   background: url(./images/pikaso_texttoimage_A-modern-water-purifier-displayed-prominently-in-a\ \(1\).jpeg) no-repeat center center/cover;
 }
@@ -169,36 +140,24 @@ body {
   border-radius: 10px 10px 0 0;
 }
 
-/* .pure-feature-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
 
-.pure-feature-card p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-} */
 
 .pure-feature-card h3, .pure-feature-card p {
-  padding: 10px; /* Adding some padding to text */
-  background-color: #222; /* Ensures text background matches the card */
+  padding: 10px;
+  background-color: #222;
   margin: 0;
   text-align: start;
 }
-
 @media (max-width: 768px) {
-  .pure-navbar {
+  .pure-navbar-cntr {
       flex-wrap: wrap;
-      position: relative;
   }
-
+  
   .pure-nav-links {
       display: none;
       flex-direction: column;
       width: 100%;
-      margin-top: 1rem;
-      background-color: #fff;
-      padding: 1rem 0;
+      padding-top: 10px;
   }
 
   .pure-nav-links.active {
@@ -207,18 +166,6 @@ body {
 
   .pure-hamburger {
       display: flex;
-  }
-
-  .pure-hero {
-      flex-direction: column;
-  }
-
-  .pure-hero-content, .pure-product-image {
-      max-width: 100%;
-  }
-
-  .pure-features {
-      grid-template-columns: 1fr;
   }
 }
 @media (max-width: 800px) {
@@ -466,6 +413,7 @@ h1 {
 .benefit-title {
   font-weight: bold;
   margin-bottom: 10px;
+  color: rgb(71, 71, 71);
   font-size: 1.1em;
 }
 .benefit-description {
@@ -546,17 +494,51 @@ h1 {
 .pure-service-video-section {
   text-align: center;
   margin-top: 30px;
-
 }
+
 .pure-service-video-placeholder {
   background-color: #ddd;
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px 10px 10px;
+  border-radius: 10px;
+  overflow: hidden; /* Ensure that any overflow is hidden */
   margin-bottom: 20px;
+  position: relative; /* Position context for images */
 }
+
+.pure-service-video-placeholder img {
+  position: absolute;
+  width: 100%; /* Cover the full width of the container */
+  height: 100%; /* Cover the full height of the container */
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  opacity: 0; /* Hide images initially */
+  transition: opacity 1s ease-in-out;
+}
+
+.pure-service-video-placeholder img:nth-child(1) {
+  animation: carousel 6s infinite;
+}
+
+.pure-service-video-placeholder img:nth-child(2) {
+  animation: carousel 6s infinite 2s; /* Starts after 2s */
+}
+
+.pure-service-video-placeholder img:nth-child(3) {
+  animation: carousel 6s infinite 4s; /* Starts after 4s */
+}
+
+@keyframes carousel {
+  0%, 33% {
+    opacity: 1;
+  }
+  66%, 100% {
+    opacity: 0;
+  }
+}
+
+
 @media (max-width: 666px) {
   .pure-service-services {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
