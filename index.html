@@ -10,6 +10,20 @@
    
 </head>
 <body>
+    <div class="loader-container" id="loader">
+        <div class="spinner"></div>
+        <img src="./images/Asset 8xhdpi.png" alt="Puremai Logo" class="logo">
+        <p class="loading-text">Loading...</p>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.classList.add('hidden');
+            }, 2000); // Show loader for 2 seconds
+        });
+    </script>
+
     <nav class="pure-navbar">
 
         <div class="pure-navbar-cntr">
@@ -30,15 +44,16 @@
     </div>
     </nav>
 <!-- header -->
- <div class="banner-head-container-main">
+<div class="banner-head-container-main">
+    <canvas id="water-canvas"></canvas>
     <div class="banner-head-container">
         <div class="banner-head-content">
             <h1 class="banner-head-h1">PURE WATER</h1>
             <h2 class="banner-head-h2">DELIVERY SERVICE</h2>
             <p class="banner-head-p">We now deliver different types of bottled water. To drink the best water, please come to us and give us an order and take safe and sound water for you.</p>
             <div class="banner-head-buttons">
-                <a href="#" class="banner-head-btn banner-head-btn-primary">Order Now</a>
-                <a href="#" class="banner-head-btn banner-head-btn-secondary">Read More</a>
+                <a href="#" style="background-color: #3a7bc8;" class="banner-head-btn banner-head-btn-primary">Order Now</a>
+                <a href="#" style="background-color: white;" class="banner-head-btn banner-head-btn-secondary">Read More</a>
                 <a href="#" class="banner-head-btn banner-head-btn-tertiary">
                     <span>See how we extract</span>
                     <svg viewBox="0 0 24 24" width="24" height="24">
@@ -51,11 +66,72 @@
             <img src="./images/headercard2.jpeg" alt="Glass of pure water" class="banner-head-image">
         </div>
     </div>
-    <div class="banner-head-wave"></div>
- </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('water-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const waves = [];
+    const waveCount = 3;
+
+    for (let i = 0; i < waveCount; i++) {
+        waves.push({
+            wavelength: Math.random() * 100 + 100,
+            amplitude: Math.random() * 20 + 10,
+            speed: Math.random() * 0.1 + 0.05,
+            offset: Math.random() * Math.PI * 2,
+        });
+    }
+
+    function drawWave(wave, time) {
+        ctx.beginPath();
+        for (let x = 0; x <= width; x += 5) {
+            const y = Math.sin((x / wave.wavelength) + time * wave.speed + wave.offset) * wave.amplitude;
+            ctx.lineTo(x, height / 2 + y);
+        }
+        ctx.lineTo(width, height);
+        ctx.lineTo(0, height);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    let mouseX = 0, mouseY = 0;
+    canvas.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function animate(time) {
+        ctx.clearRect(0, 0, width, height);
+
+        ctx.fillStyle = 'rgba(58, 123, 200, 0.1)';
+        waves.forEach((wave, index) => {
+            wave.amplitude = 10 + Math.sin(time * 0.001 + index) * 5;
+            const distX = Math.abs(mouseX - width / 2);
+            const distY = Math.abs(mouseY - height / 2);
+            const maxDist = Math.sqrt(width * width + height * height) / 2;
+            const influence = 1 - Math.min(1, Math.sqrt(distX * distX + distY * distY) / maxDist);
+            wave.amplitude += influence * 20;
+            drawWave(wave, time * 0.001);
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+</script>
  <!-- header -->
 <!-- second service section -->
- <div class="service-container-main-bg">
+ <!-- <div class="service-container-main-bg">
 <div class="service-container-main">
 <div class="service-container">
     <div class="service-hero">
@@ -87,8 +163,34 @@
     </div>
 </div>
 </div>
-</div>
+</div> -->
 <!-- second service end section -->
+
+<!-- about section new -->
+<div class="puremai-about-container-main">
+    <div class="puremai-about-container">
+        <section class="puremai-about-hero-section">
+            <div class="puremai-about-hero-content">
+                <div>
+                    <p class="puremai-about-subtitle">About Weave</p>
+                    <h1 class="puremai-about-h1">CLEANER LIVING ENVIRONMENT</h1>
+                    <p class="puremai-about-description">Experience the future of air purification. Our cutting-edge technology transforms your living space, providing you with the cleanest, freshest air for a healthier life.</p>
+                    <a href="#" style="background-color: #3a7bc8;" class="puremai-about-cta-button">DISCOVER MORE <span class="puremai-about-arrow"><i class="fas fa-arrow-right"></i>
+                    </span></a>
+                </div>
+                <div class="puremai-about-thumbnail-container">
+                    <img src="./images/headercard2.jpeg" alt="Product showcase" class="puremai-about-thumbnail">
+                </div>
+            </div>
+            <div class="puremai-about-hero-image">
+                <div class="puremai-about-zoom-icon">🔍</div>
+                <div class="puremai-about-established">Established 2024</div>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- about section end new -->
+
 
 <!-- premium services -->
 <div class="pure-service-container-main">
@@ -116,14 +218,7 @@
                 <p>Decades of experience with a large network of certified technicians.</p>
             </div>
         </div>
-
-        <div class="pure-service-video-section">
-            <div  class="pure-service-video-placeholder">
-                <!-- <img src="./images/pikaso_texttoimage_A-compact-stylish-modern-water-purifier-machine-ce.jpeg" alt="Ad 1" class="carousel-img">
-                <img src="./images/addimg.jpeg" alt="Ad 2" class="carousel-img"> -->
-                <img src="./images/pikaso_texttoimage_A-white-modern-water-purifier-machine-displayed-pr.jpg" alt="Ad 3" class="carousel-img">
-            </div>
-        </div>
+<br><br><br><br>
         
     </div>
 </div>
@@ -131,11 +226,34 @@
 
 <!-- premium services -->
 
+    <!-- product list section -->
+    <div class="productlist-main-cntr">
+        <div class="productlist-main-container">
+            <main class="productlist-container">
+                <div class="productlist-info">
+                    <h1 class="productlist-container-h1">Versatile air purifier for every space</h1>
+                    <p class="productlist-description">The Compact portable air purifier is a versatile and very quiet device that's ideal for smaller indoor spaces. It's powerful and smart, with 5 airflow speeds, and WiFi connectivity. Effective in removing a minimum of 99.97% of airborne particles.</p>
+                    <ul class="productlist-specs">
+                        <li><span>Dimensions</span><span>H: 25.6in, Ø: 11.8in</span></li>
+                        <li><span>Net weight</span><span>22lbs</span></li>
+                        <li><span>Power cord</span><span>9.8ft</span></li>
+                        <li><span>Connectivity</span><span> "Tuya Smart" App</span></li>
+                        <li><span>Noise</span><span>32dBA, 45dBA, 49dBA, </span></li>
+                        <li><span>HEPA filter</span><span>EU13 (EN 1822 class H13)</span></li>
+                    </ul>
+                </div>
+                <div class="productlist-image">
+                    <img src="./images/headercard2.jpeg" alt="RENSAIR Air Purifier">
+                </div>
+            </main>
+        </div>
+    </div>
+      <!-- product list section -->
 
 <!-- third section benifits -->
  <div  style="background-color: white; margin-top: 100px; margin-bottom: 100px;">
 <div class="benefits-container-main">
-<h1>Why Choose Our Water Purifiers?</h1>
+<h1 class="benefit-h1">Why Choose Our Water Purifiers?</h1>
 <div class="benefits-container">
     <div class="benefit-card">
         <div class="benefit-icon"><i class="fas fa-sync-alt"></i></div>
@@ -161,8 +279,76 @@
 </div>
 </div>
 <!-- third section benifits -->
+<!-- testimonials start -->
 
-
+<div class="testimonials-section-main">
+<section class="testimonials-section">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testimonials-container">
+        <div class="testimonials-card">
+            <svg class="profile-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+            </svg>
+            <div class="testimonials-header">
+                <div class="testimonials-name-date">
+                    <span class="testimonials-name">John Doe</span>
+                    <span class="testimonials-date">- March 15, 2024</span>
+                </div>
+                <div class="testimonials-rating">★★★★★</div>
+            </div>
+            <div class="testimonials-content">
+                <p>PureAqua has transformed our drinking water. The taste is incredibly fresh, and knowing our family is safe from contaminants gives us peace of mind. Highly recommended!</p>
+            </div>
+        </div>
+        <div class="testimonials-card">
+            <svg class="profile-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+            </svg>
+            <div class="testimonials-header">
+                <div class="testimonials-name-date">
+                    <span class="testimonials-name">Jane Smith</span>
+                    <span class="testimonials-date">- March 20, 2024</span>
+                </div>
+                <div class="testimonials-rating">★★★★☆</div>
+            </div>
+            <div class="testimonials-content">
+                <p>The installation was quick and hassle-free. Our water now tastes great, and we've noticed a significant reduction in limescale buildup. Very satisfied with PureAqua's service!</p>
+            </div>
+        </div>
+        <div class="testimonials-card">
+            <svg class="profile-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+            </svg>
+            <div class="testimonials-header">
+                <div class="testimonials-name-date">
+                    <span class="testimonials-name">Mike Johnson</span>
+                    <span class="testimonials-date">- March 25, 2024</span>
+                </div>
+                <div class="testimonials-rating">★★★★★</div>
+            </div>
+            <div class="testimonials-content">
+                <p>As a health-conscious individual, I appreciate how PureAqua removes harmful substances while retaining essential minerals. My water tastes clean and feels healthier. Great investment!</p>
+            </div>
+        </div>
+        <div class="testimonials-card">
+            <svg class="profile-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+            </svg>
+            <div class="testimonials-header">
+                <div class="testimonials-name-date">
+                    <span class="testimonials-name">Emily Brown</span>
+                    <span class="testimonials-date">- March 30, 2024</span>
+                </div>
+                <div class="testimonials-rating">★★★★★</div>
+            </div>
+            <div class="testimonials-content">
+                <p>The difference in water quality is remarkable. Our dishes are spotless, and our skin feels softer after showers. PureAqua's customer service is top-notch too. Couldn't be happier!</p>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<!-- testimonials end section -->
 <!-- footer section -->
 <div class="footer-container-main">
 <div class="footer-container">
